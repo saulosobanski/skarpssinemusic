@@ -1,8 +1,8 @@
 {
   "profile": {
-    "username": "@yourname",
-    "bio": "Creator · Developer · Explorer 🌍",
-    "avatar": "https://ui-avatars.com/api/?name=Your+Name&size=200&background=6d28d9&color=ffffff&bold=true&rounded=true"
+    "username": "@skarpssinemusic",
+    "bio": "🎶 artista experimental & produtor musical. synth-pop, alt-dance, post-punk. performance synth+voz ao vivo",
+    "avatar": "https://instagram.ffln6-1.fna.fbcdn.net/v/t51.82787-19/573581170_17988222407888924_4713873994742295992_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.ffln6-1.fna.fbcdn.net&_nc_cat=108&_nc_oc=Q6cZ2gFlugVKw7wA4NrNFv3Iuo45TO4RhKr6xHWBl5EvAScj_byBRSKteU9TSpTFSN6zrl1XvpCpK5p9hJkLYwt15vyd&_nc_ohc=hxGDDh7n4t8Q7kNvwFo06rB&_nc_gid=4BrfydJS1lh9FVOIwJmDsg&edm=AP4sbd4BAAAA&ccb=7-5&oh=00_Af5q6jkHwrLm1R8ouHibipgJ6BByNgmWJiQpuXHlBrD6xg&oe=6A114BB4&_nc_sid=7a9f4b"
   },
 
   "styles": {
@@ -29,21 +29,21 @@
     },
     {
       "title": "Instagram",
-      "url": "https://instagram.com/yourhandle",
+      "url": "https://instagram.com/skarpssinemusic",
       "icon": "fa-brands fa-instagram",
       "bgColor": "#e1306c",
       "textColor": "#ffffff"
     },
     {
       "title": "YouTube",
-      "url": "https://youtube.com/@yourchannel",
+      "url": "https://youtube.com/@skarpssinemusic",
       "icon": "fa-brands fa-youtube",
       "bgColor": "#ff0000",
       "textColor": "#ffffff"
     },
     {
       "title": "Twitch",
-      "url": "https://twitch.tv/yourchannel",
+      "url": "https://twitch.tv/skarpssinemusic",
       "icon": "fa-brands fa-twitch",
       "bgColor": "#9146ff",
       "textColor": "#ffffff"
@@ -96,13 +96,13 @@
     "show": true,
 
     "youtube": {
-      "channelId": "UCxxxxxxxxxxxxxxxxxxxxxxxx",
-      "label": "Latest Video"
+      "channelId": "UCUC3MiKWh5KD1lZAd1tdQiO5w",
+      "label": "Último Vídeo"
     },
 
     "twitch": {
-      "channel": "your_twitch_channel",
-      "parent": "username.github.io",
+      "channel": "skarpssinemusic",
+      "parent": "sauloviero.github.io",
       "label": "Live Stream"
     }
   }
