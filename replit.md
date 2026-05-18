@@ -1,36 +1,47 @@
-# [Project name]
+# Link Page
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+A self-hosted, config-driven alternative to Linktree / Beacons.ai. Single-page, mobile-first, no backend — can be deployed anywhere static files are hosted (GitHub Pages, Netlify, etc.).
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/linkpage run dev` — start the link page dev server
+- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000, not used by link page)
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
-- Build: esbuild (CJS bundle)
+- Link page: Pure HTML + Tailwind CSS (CDN) + Vanilla JS — zero build step required
+- Dev server: Vite (just for the preview workflow; not needed for GitHub Pages hosting)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/linkpage/index.html` — the single HTML file (layout, CDN imports)
+- `artifacts/linkpage/public/script.js` — all rendering logic (fetch config → render)
+- `artifacts/linkpage/public/config.json` — **edit this file to customise your page**
+- `artifacts/linkpage/public/` — all files in `public/` are served at the root path
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- **Zero build step for end users** — Tailwind via Play CDN and FontAwesome via CDN mean the three output files (index.html, script.js, config.json) work directly on GitHub Pages with no npm/build required.
+- **Config-driven rendering** — script.js fetches config.json on load and dynamically builds the entire page, so users never touch HTML or JS.
+- **YouTube uploads playlist trick** — the Channel ID's `UC` prefix is replaced with `UU` at runtime to target the uploads playlist, so the latest video always appears automatically.
+- **Twitch parent auto-detection** — `window.location.hostname` is always added to the Twitch parent list, so the embed works in Replit preview, GitHub Pages, and any custom domain without manual config changes.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Profile card: circular avatar, username, bio
+- Configurable link buttons: icon (Font Awesome), title, custom bg/text colors, hover animations
+- YouTube embed: always shows latest video via uploads-playlist trick (no manual video ID)
+- Twitch embed: official interactive player that shows offline banner when not live
+- All content controlled via a single `config.json` file
+
+## Deploying to GitHub Pages
+
+1. Copy `index.html`, `public/script.js`, and `public/config.json` to your GitHub Pages repo root (put script.js and config.json in the same folder as index.html, or adjust the `./script.js` / `./config.json` paths).
+2. Update `config.json` with your real profile, links, and streaming IDs.
+3. For Twitch embeds, set `streaming.twitch.parent` to your GitHub Pages domain (e.g. `username.github.io`).
 
 ## User preferences
 
@@ -38,7 +49,9 @@ _Populate as you build — explicit user instructions worth remembering across s
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- Tailwind Play CDN logs a warning in the console about production use — this is cosmetic only; the page works fine. For a fully production build, swap in the Tailwind CLI or PostCSS build.
+- The Twitch embed requires the `parent` domain to match the page's hostname. The script always adds `window.location.hostname` automatically, but you still need to add your GitHub Pages domain to `streaming.twitch.parent` for it to work there.
+- YouTube Channel IDs must start with `UC`. If yours starts with `@`, look up your Channel ID in YouTube Studio → Settings → Channel → Basic Info.
 
 ## Pointers
 

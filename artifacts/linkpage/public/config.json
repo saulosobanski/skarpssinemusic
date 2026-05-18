@@ -1,0 +1,109 @@
+{
+  "profile": {
+    "username": "@yourname",
+    "bio": "Creator · Developer · Explorer 🌍",
+    "avatar": "https://ui-avatars.com/api/?name=Your+Name&size=200&background=6d28d9&color=ffffff&bold=true&rounded=true"
+  },
+
+  "styles": {
+    "background": "linear-gradient(160deg, #0f0c29 0%, #302b63 50%, #24243e 100%)",
+    "textColor": "#ffffff",
+    "buttonRadius": "9999px",
+    "buttonShadow": true
+  },
+
+  "links": [
+    {
+      "title": "My Website",
+      "url": "https://example.com",
+      "icon": "fa-solid fa-globe",
+      "bgColor": "#6d28d9",
+      "textColor": "#ffffff"
+    },
+    {
+      "title": "Twitter / X",
+      "url": "https://twitter.com/yourhandle",
+      "icon": "fa-brands fa-x-twitter",
+      "bgColor": "#000000",
+      "textColor": "#ffffff"
+    },
+    {
+      "title": "Instagram",
+      "url": "https://instagram.com/yourhandle",
+      "icon": "fa-brands fa-instagram",
+      "bgColor": "#e1306c",
+      "textColor": "#ffffff"
+    },
+    {
+      "title": "YouTube",
+      "url": "https://youtube.com/@yourchannel",
+      "icon": "fa-brands fa-youtube",
+      "bgColor": "#ff0000",
+      "textColor": "#ffffff"
+    },
+    {
+      "title": "Twitch",
+      "url": "https://twitch.tv/yourchannel",
+      "icon": "fa-brands fa-twitch",
+      "bgColor": "#9146ff",
+      "textColor": "#ffffff"
+    },
+    {
+      "title": "TikTok",
+      "url": "https://tiktok.com/@yourhandle",
+      "icon": "fa-brands fa-tiktok",
+      "bgColor": "#010101",
+      "textColor": "#ffffff"
+    },
+    {
+      "title": "GitHub",
+      "url": "https://github.com/yourusername",
+      "icon": "fa-brands fa-github",
+      "bgColor": "#24292e",
+      "textColor": "#ffffff"
+    },
+    {
+      "title": "Buy Tickets",
+      "url": "https://example.com/tickets",
+      "icon": "fa-solid fa-ticket",
+      "bgColor": "#f59e0b",
+      "textColor": "#000000"
+    },
+    {
+      "title": "Tour Dates",
+      "url": "https://example.com/tour",
+      "icon": "fa-solid fa-map-location-dot",
+      "bgColor": "#10b981",
+      "textColor": "#ffffff"
+    },
+    {
+      "title": "Watch My Latest Video",
+      "url": "https://youtube.com/@yourchannel",
+      "icon": "fa-solid fa-clapperboard",
+      "bgColor": "#3b82f6",
+      "textColor": "#ffffff"
+    },
+    {
+      "title": "Schedule / Calendar",
+      "url": "https://example.com/schedule",
+      "icon": "fa-solid fa-calendar-days",
+      "bgColor": "#8b5cf6",
+      "textColor": "#ffffff"
+    }
+  ],
+
+  "streaming": {
+    "show": true,
+
+    "youtube": {
+      "channelId": "UCxxxxxxxxxxxxxxxxxxxxxxxx",
+      "label": "Latest Video"
+    },
+
+    "twitch": {
+      "channel": "your_twitch_channel",
+      "parent": "username.github.io",
+      "label": "Live Stream"
+    }
+  }
+}
