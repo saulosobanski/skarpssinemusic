@@ -8,7 +8,7 @@
     <title>My Links</title>
     <meta name="description" content="My links page" />
 
-    <!-- Tailwind CSS via CDN (Play CDN) -->
+    <!-- Tailwind CSS via CDN (Play CDN — zero build step) -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Font Awesome 6 (icons) -->
@@ -27,126 +27,64 @@
       rel="stylesheet"
     />
 
-    <style>
-      body {
-        font-family: 'Inter', sans-serif;
-      }
-
-      /* Full-page background applied via JS */
-      #page-bg {
-        min-height: 100vh;
-        transition: background 0.3s ease;
-      }
-
-      /* Profile avatar ring glow */
-      #avatar-img {
-        box-shadow: 0 0 0 3px rgba(255,255,255,0.25), 0 8px 32px rgba(0,0,0,0.35);
-      }
-
-      /* Link button hover lift */
-      .link-btn {
-        transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
-      }
-      .link-btn:hover {
-        transform: translateY(-2px);
-        filter: brightness(1.08);
-        box-shadow: 0 8px 24px rgba(0,0,0,0.25);
-      }
-      .link-btn:active {
-        transform: translateY(0px);
-        filter: brightness(0.95);
-      }
-
-      /* Responsive video wrapper (16:9) */
-      .video-wrapper {
-        position: relative;
-        padding-bottom: 56.25%;
-        height: 0;
-        overflow: hidden;
-        border-radius: 12px;
-      }
-      .video-wrapper iframe {
-        position: absolute;
-        top: 0; left: 0;
-        width: 100%; height: 100%;
-        border: 0;
-        border-radius: 12px;
-      }
-
-      /* Loading skeleton pulse */
-      @keyframes pulse {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0.4; }
-      }
-      .skeleton { animation: pulse 1.5s ease-in-out infinite; }
-
-      /* Fade-in for content after load */
-      @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(16px); }
-        to   { opacity: 1; transform: translateY(0); }
-      }
-      .fade-in { animation: fadeInUp 0.4s ease forwards; }
-      .fade-in-delay-1 { animation: fadeInUp 0.4s ease 0.05s forwards; opacity: 0; }
-      .fade-in-delay-2 { animation: fadeInUp 0.4s ease 0.1s forwards;  opacity: 0; }
-      .fade-in-delay-3 { animation: fadeInUp 0.4s ease 0.15s forwards; opacity: 0; }
-    </style>
+    <!-- Page styles -->
+    <link rel="stylesheet" href="style.css" />
 
     <!-- Tailwind custom config (extend only) -->
     <script>
       tailwind.config = {
         theme: {
           extend: {
-            maxWidth: {
-              'link': '28rem'
-            }
+            maxWidth: { link: "28rem" }
           }
         }
       };
     </script>
   </head>
 
-  <body class="m-0 p-0">
-    <!-- Full-page background -->
+  <body>
+    <!-- Full-page background (colour/gradient set by script.js) -->
     <div id="page-bg">
 
-      <!-- Centered single-column container: max-w-md on desktop, full-width on mobile -->
-      <div class="mx-auto w-full max-w-md px-4 pb-12 pt-10 min-h-screen flex flex-col">
+      <!-- Centred single-column layout -->
+      <div class="page-container">
 
-        <!-- ── PROFILE SECTION ── -->
-        <section id="profile-section" class="flex flex-col items-center text-center mb-8">
+        <!-- ── PROFILE ─────────────────────── -->
+        <section id="profile-section" class="profile-section">
+
           <!-- Avatar -->
           <div class="mb-4">
             <img
               id="avatar-img"
               src=""
               alt="Profile avatar"
-              class="w-24 h-24 rounded-full object-cover skeleton"
-              style="display:none"
+              class="skeleton"
             />
-            <!-- Placeholder while loading -->
-            <div id="avatar-placeholder" class="w-24 h-24 rounded-full bg-white/20 skeleton"></div>
+            <div id="avatar-placeholder" class="avatar-placeholder skeleton"></div>
           </div>
+
           <!-- Username -->
-          <h1 id="username" class="text-2xl font-bold mb-1 skeleton w-40 h-7 rounded"></h1>
+          <h1 id="username" class="skeleton w-40 h-7 rounded"></h1>
+
           <!-- Bio -->
-          <p  id="bio"      class="text-sm opacity-80 skeleton w-56 h-4 rounded mt-1"></p>
+          <p id="bio" class="skeleton w-56 h-4 rounded mt-1"></p>
+
         </section>
 
-        <!-- ── LINKS SECTION ── -->
-        <section id="links-section" class="flex flex-col gap-3 w-full mb-8">
-          <!-- Link buttons injected here by script.js -->
+        <!-- ── LINKS ──────────────────────── -->
+        <section id="links-section" class="links-section">
+          <!-- Buttons injected by script.js -->
         </section>
 
-        <!-- ── VIDEO EMBEDS SECTION ── -->
-        <section id="video-section" class="flex flex-col gap-6 w-full" style="display:none">
-          <h2 id="video-heading" class="text-center text-sm font-semibold uppercase tracking-widest opacity-60">
-            Watch / Stream
-          </h2>
+        <!-- ── VIDEO EMBEDS ──────────────── -->
+        <section id="video-section" class="video-section" style="display:none">
 
-          <!-- YouTube embed -->
+          <h2 id="video-heading" class="video-heading">Watch / Stream</h2>
+
+          <!-- YouTube latest upload -->
           <div id="youtube-container" style="display:none">
-            <p class="text-xs font-semibold uppercase tracking-wider opacity-50 mb-2 flex items-center gap-1.5">
-              <i class="fa-brands fa-youtube text-base"></i> Latest Video
+            <p class="embed-label">
+              <i class="fa-brands fa-youtube"></i> Latest Video
             </p>
             <div class="video-wrapper">
               <iframe
@@ -159,10 +97,10 @@
             </div>
           </div>
 
-          <!-- Twitch embed -->
+          <!-- Twitch live player -->
           <div id="twitch-container" style="display:none">
-            <p class="text-xs font-semibold uppercase tracking-wider opacity-50 mb-2 flex items-center gap-1.5">
-              <i class="fa-brands fa-twitch text-base"></i> Live Stream
+            <p class="embed-label">
+              <i class="fa-brands fa-twitch"></i> Live Stream
             </p>
             <div class="video-wrapper">
               <iframe
@@ -173,17 +111,16 @@
               ></iframe>
             </div>
           </div>
+
         </section>
 
-        <!-- ── FOOTER ── -->
-        <footer class="mt-auto pt-10 text-center text-xs opacity-30">
-          Powered by your own link page
-        </footer>
+        <!-- ── FOOTER ─────────────────────── -->
+        <footer class="page-footer">Powered by your own link page</footer>
 
       </div>
     </div>
 
-    <!-- Main application logic -->
-    <script src="./script.js"></script>
+    <!-- Main rendering logic -->
+    <script src="script.js"></script>
   </body>
 </html>

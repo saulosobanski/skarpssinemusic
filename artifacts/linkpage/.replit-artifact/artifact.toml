@@ -18,8 +18,7 @@ localPort = 19486
 run = "pnpm --filter @workspace/linkpage run dev"
 
 [services.production]
-build = [ "pnpm", "--filter", "@workspace/linkpage", "run", "build" ]
-publicDir = "artifacts/linkpage/dist/public"
+publicDir = "artifacts/linkpage"
 serve = "static"
 
 [[services.production.rewrites]]
@@ -28,4 +27,3 @@ to = "/index.html"
 
 [services.env]
 PORT = "19486"
-BASE_PATH = "/"

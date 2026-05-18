@@ -11,16 +11,18 @@ A self-hosted, config-driven alternative to Linktree / Beacons.ai. Single-page, 
 
 ## Stack
 
-- pnpm workspaces, Node.js 24, TypeScript 5.9
-- Link page: Pure HTML + Tailwind CSS (CDN) + Vanilla JS — zero build step required
-- Dev server: Vite (just for the preview workflow; not needed for GitHub Pages hosting)
+- pnpm workspaces, Node.js 24
+- Link page: Pure HTML + CSS + Vanilla JS — zero build step required
+- Dev server: `serve` (simple static file server, no compilation at all)
 
 ## Where things live
 
-- `artifacts/linkpage/index.html` — the single HTML file (layout, CDN imports)
+- `artifacts/linkpage/index.html` — HTML structure (CDN imports, page skeleton)
+- `artifacts/linkpage/style.css` — all custom CSS (animations, layout, transitions)
 - `artifacts/linkpage/script.js` — all rendering logic (fetch config → render)
 - `artifacts/linkpage/config.json` — **edit this file to customise your page**
-- All files live at the artifact root — no `public/` subdirectory
+- `artifacts/linkpage/robots.txt` — robots file
+- These five files are the entire deployable product — copy them to GitHub Pages as-is
 
 ## Architecture decisions
 
