@@ -18,9 +18,9 @@ A self-hosted, config-driven alternative to Linktree / Beacons.ai. Single-page, 
 ## Where things live
 
 - `artifacts/linkpage/index.html` — the single HTML file (layout, CDN imports)
-- `artifacts/linkpage/public/script.js` — all rendering logic (fetch config → render)
-- `artifacts/linkpage/public/config.json` — **edit this file to customise your page**
-- `artifacts/linkpage/public/` — all files in `public/` are served at the root path
+- `artifacts/linkpage/script.js` — all rendering logic (fetch config → render)
+- `artifacts/linkpage/config.json` — **edit this file to customise your page**
+- All files live at the artifact root — no `public/` subdirectory
 
 ## Architecture decisions
 
